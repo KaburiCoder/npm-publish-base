@@ -1,0 +1,36 @@
+{
+  "name": "npm-publish-base",
+  "version": "0.0.1",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "npm run clean & tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "pub": "npm version patch && npm publish"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./helpers": {
+      "require": "./dist/helpers.js",
+      "import": "./dist/helpers.mjs",
+      "types": "./dist/helpers.d.ts"
+    }
+  },
+  "esModuleInterop": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
